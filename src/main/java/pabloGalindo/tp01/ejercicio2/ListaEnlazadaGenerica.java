@@ -209,4 +209,23 @@ public class ListaEnlazadaGenerica<T> extends ListaGenerica<T> {
 		return nueva;
 	}
 
+	@Override
+	public void tusDatos(){
+		this.comenzar();
+		while(!this.fin()){
+			System.out.println(this.proximo().toString());
+		}
+	}
+
+	@Override
+	public boolean agregar(T[] arreglo){
+		try {
+			for (T elem : arreglo){
+				this.agregarFinal(elem);
+			}
+		} catch (Exception e) {
+			return false;
+		}
+		return true;
+	}
 }

@@ -118,4 +118,8 @@ public abstract class ListaGenerica<T> {
 	 * **/
 	//public abstract void limpiar();
 
+	public abstract void tusDatos();
+
+	public abstract boolean agregar(T[] arreglo);
+
 }
