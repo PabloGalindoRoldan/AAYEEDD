@@ -16,7 +16,7 @@ public class ColaGenerica<T> {
     }
 
     public void desencolar(){
-        lista.eliminar(lista.elemento(1));
+        lista.eliminarEn(1);
     }
 
     public void tope(){

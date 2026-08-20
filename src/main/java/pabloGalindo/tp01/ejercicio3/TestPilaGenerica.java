@@ -33,7 +33,7 @@ public class TestPilaGenerica {
         //----------
 
         System.out.println("Ahora imprimimos tope:");
-        pila.tope();
+        System.out.println(pila.tope());
         System.out.println("\n");
 
         //----------

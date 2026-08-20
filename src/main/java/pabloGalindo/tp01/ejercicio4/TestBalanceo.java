@@ -1,7 +1,5 @@
 package pabloGalindo.tp01.ejercicio4;
 
-import java.util.Deque;
-
 public class TestBalanceo {
 
     public static void main (String[] args){

@@ -1,21 +1,21 @@
 package pabloGalindo.tp01.ejercicio4;
 
-import java.util.Deque;
+import pabloGalindo.tp01.ejercicio3.PilaGenerica;
 
 public class Balanceo{
 
     public boolean balancear(String s){
-        Deque<Character> pila = new java.util.ArrayDeque<>();
+        PilaGenerica<Character> pila = new PilaGenerica<>();
 
         for(int i = 0; i < s.length(); i++){
             char c = s.charAt(i);
             if(c == '(' || c == '[' || c == '{'){
-                pila.push(c);
+                pila.apilar(c);
             } else if(c == ')' || c== ']' || c== '}'){
-                if(pila.isEmpty()){
+                if(pila.esVacia()){
                     return false;
                 }
-                char ultimo = pila.pop();
+                char ultimo = pila.tope();
                 if(c == ')' && ultimo != '('){
                     return false;
                 }
@@ -25,8 +25,9 @@ public class Balanceo{
                 if(c == '}' && ultimo != '{'){
                     return false;
                 }
+                pila.desapilar();
             }
         }
-        return pila.isEmpty();
+        return pila.esVacia();
     }
 }

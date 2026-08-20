@@ -14,11 +14,11 @@ public class PilaGenerica<T> {
     }
 
     public void desapilar(){
-        lista.eliminar(lista.elemento(lista.tamanio()));
+        lista.eliminarEn(lista.tamanio());
     }
 
-    public void tope(){
-        System.out.println(lista.elemento(lista.tamanio()));
+    public T tope(){
+        return lista.elemento(lista.tamanio());
     }
 
     public boolean esVacia(){
