@@ -109,6 +109,11 @@ public class RecorridosAGTest {
         ListaGenerica<Integer> preOrden = test.numerosImparesMayoresQuePreOrden(n1, n);
         preOrden.tusDatos();
 
+        // --- INORDEN IMPARES MAYORES QUE N---
+        System.out.print("\nInOrden impares mayores que " + n + ": \n");
+        ListaGenerica<Integer> inOrden = test.numerosImparesMayoresQueInOrden(n1, n);
+        inOrden.tusDatos();
+
         // --- POSTORDEN IMPARES MAYORES QUE N---
         System.out.print("\nPostOrden impares mayores que " + n + ": \n");
         ListaGenerica<Integer> postOrden = test.numerosImparesMayoresQuePostOrden(n1, n);

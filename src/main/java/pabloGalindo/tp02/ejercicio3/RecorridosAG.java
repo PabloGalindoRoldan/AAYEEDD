@@ -30,7 +30,36 @@ public class RecorridosAG {
 
 
     public ListaGenerica<Integer> numerosImparesMayoresQueInOrden(ArbolGeneral<Integer> a, Integer n) {
-        return null;
+        ListaGenerica<Integer> res = new ListaEnlazadaGenerica<>();
+        inOrdenRecursivo(a, n, res);
+        return res;
+    }
+
+    private void inOrdenRecursivo(ArbolGeneral<Integer> a, Integer n, ListaGenerica<Integer> lista) {
+        if (a.tieneHijos()) {
+            ListaGenerica<ArbolGeneral<Integer>> lHijos = a.getHijos();
+            lHijos.comenzar();
+            //busco el primer hijo:
+            ArbolGeneral<Integer> primerHijo = lHijos.proximo();
+            //itero sobre el primer hijo como si fuera la izq
+            inOrdenRecursivo(primerHijo, n, lista);
+            //proceso el dato
+            if (a.getDato() % 2 != 0 && a.getDato() > n) {
+                lista.agregarFinal(a.getDato());
+            }
+            //sigo con resto de hijos
+            while (!lHijos.fin()) {
+                ArbolGeneral<Integer> hijoActual = lHijos.proximo();
+                inOrdenRecursivo(hijoActual, n, lista);
+            }
+        } else {
+            // CASO BASE: Si es una hoja, se evalúa su dato directamente
+            if (a.getDato() % 2 != 0 && a.getDato() > n) {
+                lista.agregarFinal(a.getDato());
+            }
+        }
+
+
     }
 
     public ListaGenerica<Integer> numerosImparesMayoresQuePostOrden(ArbolGeneral<Integer> a, Integer n) {
