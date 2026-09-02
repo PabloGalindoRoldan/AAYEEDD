@@ -36,7 +36,7 @@ El nodo se define mediante un parámetro de tipo `T`, el cual adopta el tipo de 
 
 El método `elemento(int pos)` devuelve el objeto almacenado en la posición solicitada. Por ejemplo, al ejecutar:
 
-```java
+```
 
 System.out.println(lista.elemento(3));
 

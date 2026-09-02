@@ -1,31 +1,34 @@
 package pabloGalindo.tp01.ejercicio3;
+
 import pabloGalindo.tp01.ejercicio2.ListaGenerica;
 import pabloGalindo.tp01.ejercicio2.ListaEnlazadaGenerica;
 
 public class PilaGenerica<T> {
-    private ListaGenerica <T> lista;
+    private ListaGenerica<T> lista;
 
-    public PilaGenerica(){
+    public PilaGenerica() {
         this.lista = new ListaEnlazadaGenerica<T>();
     }
 
-    public void apilar(T elem){
+    public void apilar(T elem) {
         lista.agregarFinal(elem);
     }
 
-    public void desapilar(){
+    public T desapilar() {
+        T nodo = lista.elemento(lista.tamanio());
         lista.eliminarEn(lista.tamanio());
+        return nodo;
     }
 
-    public T tope(){
+    public T tope() {
         return lista.elemento(lista.tamanio());
     }
 
-    public boolean esVacia(){
+    public boolean esVacia() {
         return lista.esVacia();
     }
 
-    public void tusDatos(){
+    public void tusDatos() {
         lista.tusDatos();
     }
 

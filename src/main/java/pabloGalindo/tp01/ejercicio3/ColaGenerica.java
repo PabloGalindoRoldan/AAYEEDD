@@ -7,27 +7,29 @@ public class ColaGenerica<T> {
 
     private ListaGenerica<T> lista;
 
-    public ColaGenerica(){
+    public ColaGenerica() {
         this.lista = new ListaEnlazadaGenerica<T>();
     }
 
-    public void encolar(T elem){
+    public void encolar(T elem) {
         lista.agregarFinal(elem);
     }
 
-    public void desencolar(){
+    public T desencolar() {
+        T nodo = this.tope();
         lista.eliminarEn(1);
+        return nodo;
     }
 
-    public void tope(){
-        System.out.println(lista.elemento(1));
+    public T tope() {
+        return lista.elemento(1);
     }
 
-    public boolean esVacia(){
+    public boolean esVacia() {
         return lista.esVacia();
     }
 
-    public void tusDatos(){
+    public void tusDatos() {
         lista.tusDatos();
     }
 
