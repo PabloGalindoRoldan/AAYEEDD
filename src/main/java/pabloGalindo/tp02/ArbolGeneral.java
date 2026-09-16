@@ -2,6 +2,7 @@ package pabloGalindo.tp02;
 
 import pabloGalindo.tp01.ejercicio2.ListaEnlazadaGenerica;
 import pabloGalindo.tp01.ejercicio2.ListaGenerica;
+import pabloGalindo.tp01.ejercicio3.ColaGenerica;
 
 public class ArbolGeneral<T> {
     private T dato;
@@ -103,29 +104,97 @@ public class ArbolGeneral<T> {
         lista.agregarFinal(this.getDato());
     }
 
-	public ListaEnlazadaGenerica<T> inOrden() {
-		return null;
-	}
-
-	public ListaEnlazadaGenerica<T> inOrdenRecursivo(ListaEnlazadaGenerica<T> lista) {
-		return null;
-	};
-
-
-
-    public Integer altura() {
-        // Falta implementar..
-        return 0;
+    public ListaEnlazadaGenerica<T> inOrden() {
+        return null;
     }
 
-    public Integer nivel(T dato) {
-        // falta implementar
-        return -1;
+    public Integer altura() {
+        if (this.esVacio()) {
+            return 0;
+        }
+        return this.alturaRecursiva(0);
+    }
+
+    private Integer alturaRecursiva(int nivel) {
+        if (this.esHoja()) {
+            return nivel;
+        }
+
+        int max = nivel;
+
+        ListaGenerica<ArbolGeneral<T>> hijos = this.getHijos();
+        hijos.comenzar();
+        while (!hijos.fin()) {
+            ArbolGeneral<T> hijoActual = hijos.proximo();
+            int alturaHijo = hijoActual.alturaRecursiva(nivel + 1);
+            if (alturaHijo > max) {
+                max = alturaHijo;
+            }
+        }
+        return max;
     }
 
     public Integer ancho() {
-        // Falta implementar..
-        return 0;
+        if (this.esVacio()) {
+            return 0;
+        }
+
+        int maxAncho = 0;
+
+        ColaGenerica<ArbolGeneral<T>> cola = new ColaGenerica<>();
+        cola.encolar(this);
+
+        while (!cola.esVacia()) {
+            int cantNodosNivel = cola.tamanio();
+
+            if (cantNodosNivel > maxAncho) {
+                maxAncho = cantNodosNivel;
+            }
+
+            for (int i = 0; i < cantNodosNivel; i++) {
+                ArbolGeneral<T> actual = cola.desencolar();
+
+                if (actual.tieneHijos()) {
+                    ListaGenerica<ArbolGeneral<T>> lhijos = actual.getHijos();
+                    lhijos.comenzar();
+                    while (!lhijos.fin()) {
+                        cola.encolar(lhijos.proximo());
+                    }
+                }
+            }
+        }
+
+        return maxAncho;
     }
 
+    public Integer nivel(T dato) {
+        if (this.esVacio() || dato == null) {
+            return -1; // Caso base o dato inválido
+        }
+        return this.nivelRecursivo(dato, 0);
+    }
+
+    private int nivelRecursivo(T dato, int nivelActual) {
+        if (this.getDato() != null && this.getDato().equals(dato)) {
+            return nivelActual;
+        }
+
+        if (this.tieneHijos()) {
+            ListaGenerica<ArbolGeneral<T>> lhijos = this.getHijos();
+            lhijos.comenzar();
+            while (!lhijos.fin()) {
+                ArbolGeneral<T> hijoActual = lhijos.proximo();
+
+                int res = hijoActual.nivelRecursivo(dato, nivelActual + 1);
+
+                // Si lo encontró en alguna rama del hijo, retornamos el resultado hacia arriba
+                if (res != -1) {
+                    return res;
+                }
+            }
+        }
+
+
+        return -1;
+    }
 }

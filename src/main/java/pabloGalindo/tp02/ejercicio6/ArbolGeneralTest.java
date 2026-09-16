@@ -1,7 +1,6 @@
-package pabloGalindo.tp02.ejercicio3;
+package pabloGalindo.tp02.ejercicio6;
 
 import pabloGalindo.tp02.ArbolGeneral;
-import pabloGalindo.tp01.ejercicio2.ListaEnlazadaGenerica;
 
 public class ArbolGeneralTest {
 
@@ -125,23 +124,20 @@ public class ArbolGeneralTest {
         // ==========================================
         System.out.println("--- Árbol Generado Exitosamente ---");
 
-        // Recorrido Preorden e impresion de lista:
-
+        // Testeo de la altura:
         System.out.println();
-        System.out.println("--- Recorrido preOrden ---");
-        ListaEnlazadaGenerica<String> listarPreOrden = arbolGenealogico.preOrden();
-        listarPreOrden.comenzar();
-        listarPreOrden.tusDatos();
+        System.out.println("--- Altura del arbol: ---\n");
+        System.out.println(arbolGenealogico.altura());
 
-
-        //Recorrido Postorden
+        // Testeo del ancho:
         System.out.println();
-        System.out.println("--- Recorrido postOrden ---");
-        ListaEnlazadaGenerica<String> listarPostOrden = arbolGenealogico.postOrden();
-        listarPostOrden.comenzar();
-        listarPostOrden.tusDatos();
+        System.out.println("--- Ancho del arbol: ---\n");
+        System.out.println(arbolGenealogico.ancho());
 
-
+        // Testeo de nivel
+        System.out.println();
+        System.out.println("--- Nivel de Julian: ---\n");
+        System.out.println(arbolGenealogico.nivel(julian.getDato()));
     }
 
 }

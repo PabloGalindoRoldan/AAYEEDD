@@ -33,4 +33,8 @@ public class ColaGenerica<T> {
         lista.tusDatos();
     }
 
+    public int tamanio(){
+        return lista.tamanio();
+    }
+
 }

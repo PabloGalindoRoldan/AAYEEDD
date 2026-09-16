@@ -22,3 +22,10 @@ siempre. Todo Árbol Binario puede verse conceptualmente como un árbol general 
 formalmente un árbol binario no es un simple árbol general ordenado, ya que distingue explícitamente entre subárbol
 izquierdo y subárbol derecho incluso si un nodo tiene un solo hijo).
 
+# Ejercicio 3
+
+3.b.- Para implementar los metodos en la clase arbol general, lo que haria seria sacarle el arbol del parametro y solo
+pasarle n, porque al arbol lo llamaria con this.
+
+
+
